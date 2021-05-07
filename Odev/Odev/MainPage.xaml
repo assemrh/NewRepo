@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:Y="http://schemas.microsoft.com/winfx/2009/xaml"
+             Y:Class="Odev.MainPage">
+    <ScrollView>
+        <StackLayout
+            BackgroundColor="WhiteSmoke"
+            Margin="3,15">
+            <Label 
+                Text=" Dönem Sonu Not Hesabı Uygulaması "
+                FontSize="Large"
+                TextColor="Red"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="CenterAndExpand"/>
+            <Frame 
+                CornerRadius="10"
+                BorderColor="Black"
+                HorizontalOptions="Fill"
+                HasShadow="True"
+                Margin="15,3"
+    
+                >
+                <StackLayout HorizontalOptions="Fill" >
+                    <StackLayout Orientation="Horizontal" >
+                        <Label Text=" Vize Notu"  FontSize="18" VerticalOptions="Center"/>
+                        <Entry Y:Name="VizeNotu" 
+                               Placeholder="Vize Notunuzu Girin" 
+                               HorizontalOptions="FillAndExpand"
+                               Keyboard="Numeric"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text=" Ödev Notu" FontSize="18" VerticalOptions="Center"/>
+                        <Entry 
+                            Y:Name="OdevNotu" 
+                            Placeholder="Vize Notunuzu Girin" 
+                            Keyboard="Numeric"
+                            HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label 
+                            Text="{Binding Source={Y:Reference OdevVizeNotuYuzdesi},
+                              Path=Value,
+                              StringFormat='{0:F0}%'}"/>
+                        <Slider 
+                            Y:Name="OdevVizeNotuYuzdesi" 
+                            Minimum="0"
+                            Maximum="100"
+                            Value="40"
+                            MaximumTrackColor="Red"
+                            MinimumTrackColor="Blue"
+                            HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text=" Finel Notu" FontSize="18" VerticalOptions="Center"/>
+                        <Entry 
+                            Y:Name="FinelNotu" 
+                            Placeholder="Vize Notunuzu Girin"  
+                            Keyboard="Numeric"
+                            HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                    <Label Text="F YÜzdesi" FontSize="16" VerticalOptions="Center"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Label 
+                            Text="{Binding Source={Y:Reference FinelNotuYuzdesi},
+                              Path=Value,
+                              StringFormat='{0:F0}%'}"/>
+                        <Slider 
+                            Y:Name="FinelNotuYuzdesi" 
+                            Minimum="0"
+                            Value="60"
+                            Maximum="100"
+                            MaximumTrackColor="Red"
+                            MinimumTrackColor="Blue"
+                            HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                    <Button Text="Hesapla" Clicked="Button_Clicked"/>
+
+                </StackLayout>
+                
+            </Frame>
+            <Frame 
+                BackgroundColor="LightGreen"
+                BorderColor="Black"
+                HorizontalOptions="FillAndExpand"
+                HasShadow="True"
+                CornerRadius="10"
+                Margin="15,3">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="HBN" HorizontalOptions="Center"/>
+                    <Label Grid.Row="1" FontSize="26" Grid.Column="0" Y:Name="HBN" Text="" HorizontalOptions="Center"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="Harf Notu" HorizontalOptions="Center"/>
+                    <Label FontSize="26" Grid.Row="1" Grid.Column="1" Y:Name="HarfNotu" Text=" " HorizontalOptions="Center"/>
+                    <Label Grid.Row="2" Grid.ColumnSpan="2" Text="Sonuç" HorizontalOptions="Center"/>
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
